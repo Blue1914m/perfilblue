@@ -133,13 +133,21 @@ footer {
 
 h1 {
     text-align: center;
-    color: white;
-    padding: 12px;
+    color: #ffffff;
+    padding: 8px;
+    text-shadow:0 0 25px rgba(255, 255, 255, 0.9);
+    font-family: "DynaPuff";
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
 }
 
 #inf {
+    padding: 19px;
     margin: auto;
     text-align: center;
+    font-family: "DynaPuff";
 }
 
 #foto {
