@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Blue</title>
+    <style>
+    * {
+      margin: 5;
+      padding: 5;
+    }
+
+
+img{
+    width:100%;
+}
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: Arial;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+  
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    let time = 0;
+    
+    function animate() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      
+      for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height / 2);
+        
+        for (let x = 0; x < canvas.width; x += 10) {
+          const y = canvas.height / 2 + Math.sin(x * 0.01 + time * 0.05 + i * 2) * 50 + Math.sin(time * 0.03 + i) * 20;
+          ctx.lineTo(x, y);
+        }
+        
+        ctx.stroke();
+      }
+      
+      time += 1;
+      requestAnimationFrame(animate);
+    }
+    
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+    
+    animate();
+  </script>
+    
+
+    <main>
+      <div id="inf">
+          <h1>BLUE</h1>
+          <img id="foto" src="garota.png" alt="foto" height="250">
+      </div>
+      <div class="infos">
+          <p id="txt1">Estudo para full stack e faço videos para o tiktok, da uma passada la!</p>
+          <p id="txt1t">Me segue lá no tiktok: <a href="https://www.tiktok.com/@pkzin.zxl" target="_blank" rel="next">@Pkzin.zxl</a></p>
+      </div>
+       
+      <!--audio-->
+      <br>
+      <div class="now-playing">
+        <p style="font-size: 1.3em; color: #c4b5fd; margin-bottom: 15px;">Músicas Favoritas</p>
+      
+        <div class="track" data-track="0">
+          nuts - lili pep 🍒
+        </div>
+        <div class="progress"><div class="progress-bar"></div></div>
+      
+        <div class="track" data-track="1">
+          let down - radiohead 🌙
+        </div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      
+        <div class="track" data-track="2">
+          wutiwanti ✿
+        </div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      
+        <p class="custom-text">Confira também minha playlist no <a href="https://open.spotify.com/playlist/5cUj0uKFx2WYEgqWT8H60k?si=dc7e18b2132b407b" target="_blank" rel="next">Spotify</a>! 🎵</p>
+      
+      </div>
+      </main>
+
+    <!-- Áudios para player -->
+    <audio id="audio-nuts" src="midia/nuts.mp3" preload="metadata"></audio>
+    <audio id="audio-letdown" src="Let Down (Remastered).mp3" preload="metadata"></audio>
+    <audio id="audio-wuti" src="wutiwant.mp3" preload="metadata"></audio>
